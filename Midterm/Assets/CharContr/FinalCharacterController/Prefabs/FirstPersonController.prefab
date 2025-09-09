@@ -5033,6 +5033,8 @@ GameObject:
   - component: {fileID: 2480968138268641731}
   - component: {fileID: 6024087826744889098}
   - component: {fileID: 4197723351251030326}
+  - component: {fileID: 1421277745652037568}
+  - component: {fileID: 4774856982174502008}
   m_Layer: 0
   m_Name: FirstPersonController
   m_TagString: Untagged
@@ -5067,9 +5069,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7650340595968431455}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: de13a7420582ded45a8d7d3f96889aca, type: 3}
-  m_Controller: {fileID: 9100000, guid: f989a8296622373408036db3016f78a3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6cf28464dd44e1a48afe46ae800ec2a7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5103,7 +5105,7 @@ CharacterController:
   m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.00001
   m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!114 &6024087826744889098
@@ -5120,10 +5122,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterController: {fileID: 2480968138268641731}
   _playerCamera: {fileID: 6094919452412418717}
-  _animator: {fileID: 5413140459980634752}
-  runAcceleration: 50
+  runAcceleration: 35
   runSpeed: 4
-  drag: 30
+  drag: 15
+  gravity: 25
+  jumpSpeed: 1
+  movingThreshold: 0.01
+  sprintAcceleration: 50
+  sprintSpeed: 7
   lookSenseH: 0.1
   lookSenseV: 0.1
   lookLimitV: 89
@@ -5139,6 +5145,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e684598c02dcf4fa8c4a2b08a572c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holdToSprint: 1
+--- !u!114 &1421277745652037568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7650340595968431455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b5f616a38bb9fc46a7f2e8e4ff1fdfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CurrentPlayerMovementState>k__BackingField: 0
+--- !u!114 &4774856982174502008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7650340595968431455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df2c5f2a74544f46824b9b7daa77de0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 5413140459980634752}
+  locomotionBlendSpeed: 4
 --- !u!1 &7724671161422906408
 GameObject:
   m_ObjectHideFlags: 0
@@ -6085,7 +6119,7 @@ Transform:
   m_GameObject: {fileID: 9180974611637944091}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.018499402, z: 0, w: 0.9998289}
-  m_LocalPosition: {x: -0.008, y: 1.71, z: 0.017}
+  m_LocalPosition: {x: -0.02, y: 1.71, z: 0.317}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
