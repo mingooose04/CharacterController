@@ -102,10 +102,10 @@ namespace CharContr.FinalCharacterController
             float lateralAcceleration = isSprinting ? sprintAcceleration : runAcceleration;
             float clampLateralMagnitude = isSprinting ? sprintSpeed : runSpeed;
 
+            //combines player input to get direction synced with camera view
             Vector3 cameraForwardXZ = new Vector3(_playerCamera.transform.forward.x, 0f, _playerCamera.transform.forward.z).normalized;
             Vector3 cameraRightXZ = new Vector3(_playerCamera.transform.right.x, 0f, _playerCamera.transform.right.z).normalized;
             Vector3 movementDirection = cameraRightXZ * _playerLocomotionInput.MovementInput.x + cameraForwardXZ * _playerLocomotionInput.MovementInput.y;
-
             Vector3 movementDelta = movementDirection * lateralAcceleration * Time.deltaTime;
             Vector3 newVelocity = _characterController.velocity + movementDelta;
 
