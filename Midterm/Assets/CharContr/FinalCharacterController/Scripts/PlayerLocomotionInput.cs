@@ -22,7 +22,7 @@ namespace CharContr.FinalCharacterController
             InputActions = new InputSystem_Actions();
             InputActions.Enable();
 
-            InputActions.Player.Enable();
+            InputActions.Player.Enable(); 
             InputActions.Player.SetCallbacks(this);
         }
 
